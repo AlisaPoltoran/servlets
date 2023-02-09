@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 // Stub
 public class PostRepository {
 
-    private long counter = 0;
+    private volatile long counter = 0;
 
     private Map<Long, Post> posts = new ConcurrentHashMap<>();
 
