@@ -18,11 +18,7 @@ public class PostService {
     }
 
     public Post getById(long id) {
-//        if (repository.getById(id).isEmpty()) {
-//            throw new NotFoundException();
-//        }
         return repository.getById(id).orElseThrow(NotFoundException::new);
-//        return repository.getById(id).get();
     }
 
     public Post save(Post post) {
