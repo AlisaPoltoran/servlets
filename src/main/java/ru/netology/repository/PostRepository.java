@@ -10,9 +10,9 @@ import java.util.concurrent.atomic.AtomicLong;
 // Stub
 public class PostRepository {
 
-    private AtomicLong counter = new AtomicLong(0);
+    private final AtomicLong counter = new AtomicLong(0);
 
-    private Map<Long, Post> posts = new ConcurrentHashMap<>();
+    private final Map<Long, Post> posts = new ConcurrentHashMap<>();
 
     public List<Post> all() {
         return new ArrayList<>(posts.values());
@@ -24,7 +24,6 @@ public class PostRepository {
 
     public Post save(Post post) {
         Post tempPost;
-
         if (post.getId() == 0) {
             counter.addAndGet(1);
             posts.put(counter.get(), new Post(counter.get(), post.getContent()));
@@ -35,7 +34,6 @@ public class PostRepository {
         } else {
             throw new NotFoundException("There is no post with specified id");
         }
-
         return tempPost;
     }
 
